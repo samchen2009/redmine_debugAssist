@@ -1,0 +1,17 @@
+# This is an example yml to show how a filter looks like
+
+filter:
+  input: #define what input this filter accept.
+    - matches #can connect with another filter's output.
+    - log #only accept a full log or section. The 'section' below will do sanity check.
+    - symptom #Tell system that whether this filter will responde to smart search.
+  section: kernel  #This filter can only apply to kernel log
+  filter_type: match #Match keyword or run a shell script?
+  matches: # List all the regexp strings to match, they are "OR" relations.
+    - "/Kernel Panic$/"
+  shell: # If not nil, will run shell script instead of matches.
+    - 
+  output:
+    - owner: xxx@yyy.com  #
+    - symptom: Kernel_Panic # system may check whether system have other filters for this symptom if you define.
+    - log: yes #output the log 
