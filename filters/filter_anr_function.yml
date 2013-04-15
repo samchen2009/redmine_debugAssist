@@ -1,7 +1,7 @@
 # This is an example yml to show how a filter looks like
 ---
 filter:
-  name:  filter_example
+  name:  filter_anr_function
   input: #define what input this filter accept.
     - matches #can connect with another filter's output.
     - log #only accept a full log or section. The 'section' below will do sanity check.
@@ -10,14 +10,12 @@ filter:
   filter_type: match #Match keyword or run a shell script?
   matches: # List all the regexp strings to match.
     patterns:
-      - name: kernel_panic
-        regexp: /Kernel Panic/i
-      - name: fatal_execption
-        regexp: /FATAL Exception/i
-    relations: kernel_panic or fatal_execption
+      - name: anr_function
+        regexp: /anr_function/i
+    relations: anr_function
   shell: # If not nil, will run shell script instead of matches.
     - 
   output:
-    owner: xxx@yyy.com  #
-    symptom: Kernel_Panic # system may check whether system have other filters for this symptom if you define.
+    owner: anr@yyy.com  #
+    symptom: ANR_Function # system may check whether system have other filters for this symptom if you define.
     log: yes #output the log 

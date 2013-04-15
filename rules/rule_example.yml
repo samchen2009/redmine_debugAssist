@@ -1,0 +1,16 @@
+#
+# This is an example to show how to write a rule for a symptom
+#
+
+---
+rule:
+  name: rule_example
+  filters:
+    - filter_anr
+    - filter_anr_function
+  rules:
+
+  relation: filter_anr and filter_anr_function
+
+
+
