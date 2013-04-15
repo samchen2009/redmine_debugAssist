@@ -1,0 +1,17 @@
+%table{:style => "width:100%"}
+  %tr{:class => "#{cycle 'odd', 'even'}"}
+    %td
+      = check_box_tag 'rule_or_filter'
+      %label rule
+    %td selector
+    %td.add-filter
+      = l(:label_filter_add)
+      = select_tag 'add_filter_select', options_for_select([["Rule","rule"],["Filter","filter"]]), :onchange => "add_filter();"
+  %tr
+    %td.buttons
+      = link_to l(:button_clear), {}, :class => 'icon icon-reload'
+      = link_to "save as rule", {}, :class => 'icon icon-save'
+    %td
+    %td.add_filter
+      = link_to "   new rule   ", "#", :class => 'icon icon-add', :style => "float:right; margin:16px"
+      = link_to "   new filter   ", "#", :class => 'icon icon-add', :style => "float:right; margin:16px"

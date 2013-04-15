@@ -1,0 +1,32 @@
+- html_title(l(:charts_menu_label))
+
+/<% content_for :header_tags do %>
+/  <%= javascript_include_tag '/plugin_assets/open_flash_chart/javascripts/swfobject.js' %>
+/  <%= javascript_include_tag '/plugin_assets/redmine_charts2/javascripts/charts.js' %>
+/<% end %>
+
+%h2 Logrobot
+
+= form_tag :controller => 'logrobots', :action => 'start', :method => :get, :id => 'logrobot_form' do
+  #rules_queiry_form
+    %fieldset#filters.collapsible
+      %legend{:onclick => "toggleFieldset(this)"}= l(:label_filter_plural)
+      = render :partial => 'filters_table'
+
+  #pasted_log
+    %fieldset.box
+      %legend Log
+      #log-file{:style => "float:left; width:60%; height:90%"}
+        = render :partial => "attachments/form"
+        %p Or Paste Log
+        = text_area_tag("pasted_log", nil, :rows => 20, :cols => 108)
+      #log-prop{:style=> "float:left; width:38%; height:90%"}
+        = render :partial => "log_props"
+
+  #output_log
+    %fieldset.box
+      %legend Output
+      = text_area_tag("output_log", nil, :rows => 20, :cols => 108)
+
+  %p= submit_tag l(:button_apply)
+  /= render :partial => 'saved_rules'

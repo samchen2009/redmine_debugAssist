@@ -5,4 +5,7 @@ Redmine::Plugin.register :redmine_logrobot do
   version '0.0.1'
   url 'http://example.com/path/to/plugin'
   author_url 'http://example.com/about'
+
+  requires_redmine :version_or_higher => '2.1.2'
+  menu :top_menu, :LogRobot, {:controller=>'logrobots', :action => 'index'}, :caption => 'Logrobot'
 end
